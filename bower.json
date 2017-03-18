@@ -1,0 +1,25 @@
+{
+  "name": "wgh",
+  "homepage": "https://github.com/angelwgh/w.gh",
+  "authors": [
+    "angelwgh <angel_wgh@163.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "bootstrap": "^3.3.7",
+    "jquery1.12.4": "juqery#1.12.4",
+    "angular1.4.9": "angular#1.4.9",
+    "marked": "^0.3.6",
+    "angular-route1.4.9": "angular-route#1.4.9",
+    "highlight": "^9.10.0"
+  }
+}

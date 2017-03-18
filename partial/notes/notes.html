@@ -1,0 +1,10 @@
+<script src="lib/marked/marked.min.js"></script>
+<script src="lib/highlinght/highlight.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<div >
+	<ul>
+		<li ng-repeat="note in notesList | orderBy:'id'">
+			{{note.en_name}} <small>{{note.cn_name}}</small>
+		</li>
+	</ul>
+</div>
