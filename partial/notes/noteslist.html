@@ -1,0 +1,13 @@
+
+<link rel="stylesheet" ng-href="{{data.cssFilePath}}">
+
+
+<div class="m-notes">
+	<ul class="notes-list">
+		<li ng-repeat="note in data.notesList | orderBy:'id'">
+			<a ng-href="#/notes/{{note.en_name}}">
+				{{note.en_name}} <small>{{note.cn_name}}</small>
+			</a>	
+		</li>
+	</ul>
+</div>

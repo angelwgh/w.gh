@@ -1,7 +1,22 @@
+a{color: #333}
+a:focus,
+a:hover{
+	color: #333;
+	text-decoration: none;
+}
+
+.p-r{position: relative}
+.f-l{float: left;}
+.f-r{float: right;}
+.d-inb{display: inline-block;*display:inline;*zoom:1;}
+
+
 .topbar{height: 4px;background-color: #000;}
-.page-header h1{text-align: center}
+h1{text-align: center}
 
 .menu .nav{text-align: center;display: block;width: 100%;}
 .menu .nav li{display: inline-block;*display:inline;*zoom:1;float: none;padding: 0 15px;}
 .menu .nav li a{color: #333;border-bottom: 2px solid transparent;padding: 15px 0; transition: border-color 0.2s ease-in-out }
 .menu .nav li a:hover{background-color: #fff; border-bottom-color: #000;}
+
+

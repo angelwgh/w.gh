@@ -29,5 +29,6 @@
 				"en_name":"JavaScript",
 				"id":"3"
 			}
-	]
+	],
+	"cssFilePath":"partial/notes/style/notes.css"
 }

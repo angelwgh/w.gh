@@ -20,6 +20,7 @@
     "angular1.4.9": "angular#1.4.9",
     "marked": "^0.3.6",
     "angular-route1.4.9": "angular-route#1.4.9",
-    "highlight": "^9.10.0"
+    "highlight": "^9.10.0",
+    "angular-sanitize1.4.9": "angular-sanitize#1.4.9"
   }
 }

@@ -18,9 +18,17 @@ $wgh.main_app.config(['$routeProvider',function($routeProvider) {
 		controller:'homepageCtrl'
 	})
 	.when('/notes',{
-		templateUrl:'partial/notes/notes.html',
-		controller:'notesCtrl'
+		templateUrl:'partial/notes/noteslist.html',
+		controller:'notesListCtrl'
 	})
+		.when('/notes/:notePath',{
+			templateUrl:'partial/notes/notes.html',
+			controller:'notesCtrl'
+		})
+			.when('/notes/:notePath/:mdPath',{
+				templateUrl:'partial/notes/notes.html',
+				controller:'notesMdCtrl'
+			})
 	.when('/perInfo',{
 		templateUrl:'partial/perInfo/perInfo.html',
 		controller:'perinfoCtrl'

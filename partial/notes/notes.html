@@ -1,10 +1,33 @@
+<link rel="stylesheet" href="lib/highlinght/styles/monokai-sublime.css">
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
 <script src="lib/marked/marked.min.js"></script>
-<script src="lib/highlinght/highlight.js"></script>
+<script src="lib/highlinght/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
-<div >
-	<ul>
-		<li ng-repeat="note in notesList | orderBy:'id'">
-			{{note.en_name}} <small>{{note.cn_name}}</small>
-		</li>
-	</ul>
+<link rel="stylesheet" ng-href="{{data.cssFilePath}}">
+<div class="container m-title">
+	<h1> <span ng-bind="data.title" class="d-inb"></span></h1>
+</div>
+<div class="g-content">
+	<div class="m-directory">
+	    <ul>
+	        <li ng-repeat="part in data.menu">
+	            <h4><i class="glyphicon glyphicon-triangle-bottom"></i> {{part.title}}</h3>
+				<ul>
+					<li ng-repeat="chapter in part.chapters">
+						<h5><i class="glyphicon glyphicon-triangle-bottom"></i> {{chapter.title}}</h5>
+						<ul>
+							<li ng-repeat="section in chapter.sections">
+								<a ng-href="#/notes/{{hash.notePath}}/{{section.path}}" ng-bind="section.title">
+								</a>								
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<div class="m-content" >
+		
+	
+	</div>
 </div>

@@ -1,0 +1,19 @@
+{
+	"title":"angular",
+	"menu":{
+		"part1":{
+			"title":"Angular1 基础知识",
+			"chapters":{
+				"chapter1":{
+					"title":"Angular权威教程",
+					"sections":{
+						"section1":{
+							"title":"1.1 数据绑定",
+							"path":"1.1.1"
+						}
+					}
+				}
+			}
+		}
+	}
+}
