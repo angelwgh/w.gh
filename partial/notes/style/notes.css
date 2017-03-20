@@ -43,3 +43,5 @@
 	text-indent: 2em;
 }
 
+.m-content iframe{border: 1px solid #ccc;border-radius: 4px;}
+
