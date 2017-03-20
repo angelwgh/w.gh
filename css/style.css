@@ -4,6 +4,8 @@ a:hover{
 	color: #333;
 	text-decoration: none;
 }
+ul li{list-style: none;}
+body{font: 16px/1.5 "微软雅黑"}
 
 .p-r{position: relative}
 .f-l{float: left;}

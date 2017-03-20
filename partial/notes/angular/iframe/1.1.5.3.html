@@ -1,0 +1,40 @@
+<!doctype html>
+<html ng-app="app">
+<head>
+<script  src="angular.min.js"></script>
+</head>
+<body>
+<div ng-controller="MyController">
+    <input ng-model="to" type="email" placeholder="Recipient"  />
+    <textarea ng-model="emailBody"></textarea>
+    <pre>__ previewText __</pre>
+</div>
+<script type="text/javascript">
+    angular.module('emailParser',[])
+    .config(['$interpolateProvider',function($interpolateProvider) {
+    	$interpolateProvider.startSymbol('__');
+    	$interpolateProvider.endSymbol('__');
+    }])
+    .factory('EmailParser', ['$interpolate', function($interpolate){
+    	return {
+    		parse:function (text,content) {
+    			var template = $interpolate(text);
+    			return template(context);
+    		}
+    	};
+    }]);
+
+
+    angular.module('app',['emailParser'])
+    	.controller('MyController', ['$scope','EmailParser', function($scope, EmailParser){
+    		$scope.$watch('emailBody',function (body) {
+    			if (body) {
+    				$scope.previewText = EmailParser(body,{
+    					to:$scope.to
+    				})
+    			}
+    		})
+    	}])
+</script>
+</body>
+</html>
