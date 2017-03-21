@@ -1,0 +1,141 @@
+<!doctype html>
+<html ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script  src="angular.min.js"></script>
+	<style>
+		.in-b{
+			display: inline-block;
+			padding: 5px 15px;
+		}
+	</style>
+</head>
+<body>
+	<form name="signup_form" novalidate ng-submit="signupForm()" ng-controller="signupController">
+		<fieldset>
+			<legend>注册</legend>
+			<div class="form-group">
+				<label>姓名</label>
+				<input type="text"
+					   name="name"
+					   class="form-control" 
+					   placeholder="姓名"
+					   ng-model="signup.name"
+					   ng-minlength="3"
+					   ng-maxlength="20" required>
+				<div class="error"
+					 ng-show="signup_form.name.$dirty && signup_form.name.$invalid && signup_form.submitted">
+					 <small class="alert alert-danger in-b"
+					 		ng-show="signup_form.name.$error.required">
+					 	姓名必须填写
+					 </small>
+					 <small class="alert alert-danger in-b"
+					 		ng-show="signup_form.name.$error.minlength">
+					 	姓名长度小于3个字符
+					 </small>
+					 <small class="alert alert-danger in-b"
+					 		ng-show="signup_form.name.$error.maxlength">
+					 	姓名长度大于20个字符
+					 </small>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label>电子邮箱</label>
+				<input type="email"
+					   class="form-control" 
+					   placeholder="Email"
+			           name="email"
+			           ng-model="signup.email"
+			           ng-minlength="3" ng-maxlength="20" required />
+			    <div class="error"
+			    	 ng-show="signup_form.email.$dirty && signup_form.email.$invalid && signup_form.submitted">
+			    	<small class="alert alert-danger in-b"
+					 		ng-show="signup_form.email.$error.required">
+					 	电子邮箱必须填写
+					 </small>
+					 <small class="alert alert-danger in-b"
+					 		ng-show="signup_form.email.$error.minlength">
+					 	电子邮箱长度小于3个字符
+					 </small>
+					 <small class="alert alert-danger in-b"
+					 		ng-show="signup_form.email.$error.email">
+					 	电子邮箱格式错误
+					 </small>
+					 <small class="alert alert-danger in-b"
+					 		ng-show="signup_form.email.$error.maxlength">
+					 	电子邮箱长度大于20个字符
+					 </small>
+			    </div>
+			</div>
+			<div class="form-group">
+				<label>用户名</label>
+				<input type="text"
+					   class="form-control" 
+					   placeholder="注册用户名"
+			           name="username"
+			           ng-model="signup.username"
+			           ensure-unique="username" 
+			           ng-minlength="3" ng-maxlength="20" required />
+			    <div class="error"
+			    	 ng-show="signup_form.username.$dirty && signup_form.username.$invalid && signup_form.submitted">
+			    	<small class="alert alert-danger in-b"
+					 		ng-show="signup_form.username.$error.required">
+					 	用户名必须填写
+					 </small>
+					 <small class="alert alert-danger in-b"
+					 		ng-show="signup_form.username.$error.minlength">
+					 	用户名长度小于3个字符
+					 </small>
+					 <small class="alert alert-danger in-b"
+					 		ng-show="signup_form.username.$error.unique">
+					 	用户名已经存在，请换一个
+					 </small>
+					 <small class="alert alert-danger in-b"
+					 		ng-show="signup_form.username.$error.maxlength">
+					 	用户名长度大于20个字符
+					 </small>
+			    </div>
+			</div>
+
+			
+			<button type="submit" class="btn btn-primary" >提交</button>
+		</fieldset>
+	</form>
+	
+
+	<script type="text/javascript">
+	   var app = angular.module('app', [])
+		app.directive('ensureUnique', ['$http', function($http) {
+		  return {
+		    require: 'ngModel',
+		    link: function(scope, ele, attrs, c) {
+		      scope.$watch(attrs.ngModel, function() {
+		        $http({
+		          method: 'POST',
+		          url: '/api/check/' + attrs.ensureUnique,
+		          data: {'field': attrs.ensureUnique}
+		        }).success(function(data, status, headers, cfg) {
+		          c.$setValidity('unique', data.isUnique);
+		        }).error(function(data, status, headers, cfg) {
+		          c.$setValidity('unique', false);
+		        });
+		      });
+		    }
+		  };
+		}]);
+		app.controller('signupController', function($scope) {
+				$scope.submitted = false;
+				$scope.signupForm = function() {
+					if ($scope.signup_form.$valid) {
+						
+					} else {
+						$scope.signup_form.submitted = true;
+					}
+				}
+
+			});
+	</script>
+</body>
+</html>

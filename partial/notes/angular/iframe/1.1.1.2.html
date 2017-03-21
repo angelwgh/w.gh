@@ -5,7 +5,7 @@
 </head>
 <body>
 <div ng-controller="MyController">
-    <h1>Hello {{ clock }}!</h1>
+    <h1>Hello {{ clock | date : 'yyyy-MM-dd HH:mm:ss:sss EEEE'}}!</h1>
 </div>
 <script type="text/javascript">
     angular.module('app',[])
@@ -14,7 +14,7 @@
             $scope.clock = new Date();
             $timeout(function() {
                 updateClock();
-            }, 1000);
+            }, 1);
         };
         updateClock();
     }]);

@@ -17,19 +17,22 @@
     }])
     .factory('EmailParser', ['$interpolate', function($interpolate){
     	return {
-    		parse:function (text,content) {
-    			var template = $interpolate(text);
-    			return template(context);
-    		}
+    		parse:function (text,context) {
+        			var template = $interpolate(text);
+        			return template(context);
+    		      }
     	};
     }]);
 
 
     angular.module('app',['emailParser'])
     	.controller('MyController', ['$scope','EmailParser', function($scope, EmailParser){
+
+            $scope.to='angel_wgh@163.com';
+            $scope.emailBody='emailadress:__to__'
     		$scope.$watch('emailBody',function (body) {
     			if (body) {
-    				$scope.previewText = EmailParser(body,{
+    				$scope.previewText = EmailParser.parse(body,{
     					to:$scope.to
     				})
     			}
