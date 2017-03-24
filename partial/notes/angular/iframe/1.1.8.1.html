@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title>指令</title>
+	<script src="bower_components/angular/angular.min.js"></script>
+</head>
+<body>
+	<h1 ng-init="greeting='HelloWorld'">
+	    The greeting is: {{ greeting }}
+	</h1>
+	<my-directive></my-directive>
+	<script>
+		var app = angular.module('app', [])
+
+		app.directive('myDirective',function () {
+			return {
+				restrict:'EAC',
+				replace:true,
+				template:'<a href="http://google.com">Click me to go to Google</a>'
+			}
+		})
+	</script>
+</body>
+</html>
