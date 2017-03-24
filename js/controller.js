@@ -22,6 +22,7 @@ $wgh.content_app.controller('notesListCtrl', ['$scope','$routeParams','$http',
 	}
 ])
 
+
 //笔记内容页
 $wgh.content_app.controller('notesCtrl', ['$scope','$routeParams','$http', 
 	function($scope,$routeParams,$http){
@@ -33,6 +34,8 @@ $wgh.content_app.controller('notesCtrl', ['$scope','$routeParams','$http',
 
 	}
 ])
+
+
 //加载md文件
 $wgh.content_app.controller('notesMdCtrl',['$scope','$routeParams','$http',
 		function ($scope,$routeParams,$http) {

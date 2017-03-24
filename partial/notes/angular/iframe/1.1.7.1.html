@@ -9,6 +9,7 @@
 			display: inline-block;
 			padding: 5px 15px;
 		}
+
 	</style>
 </head>
 <body>
@@ -134,6 +135,11 @@
 						$scope.signup_form.submitted = true;
 					}
 				}
+
+
+				$scope.$watch('signup', function(newValue, oldValue, scope) {
+					console.log(newValue)
+				},true);
 
 			});
 	</script>

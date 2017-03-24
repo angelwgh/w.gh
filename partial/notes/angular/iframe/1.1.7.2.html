@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title>anular-messages</title>
+	<link rel="stylesheet" href="bootstrap.min.css">
+	<script src="bower_components/angular/angular.min.js"></script>
+	<script src="bower_components/angular-messages/angular-messages.min.js"></script>
+</head>
+<body>
+	<form name="signup_form" novalidate ng-submit="signupForm()" ng-controller="signupController">
+		<legend>注册</legend>
+		<div class="form-group">
+			<label>姓名</label>
+			<input type="text"
+					name="name"
+					ng-model="signup.name"
+					ng-minlength="3"
+					ng-maxlength="20" required>
+			<div class="error" ng-messages="signup_form.name.$error" >
+				<div class="alert alert-danger" ng-message="minlength">不能少于3个字符</div><!--覆盖模板中的提示-->
+				<div ng-class="alert alert-danger" ng-messages-include="templates/errors.html"></div>
+				 <!--或者这样写
+                            <ng-messages-include src="templates/errors.html"></ng-messages-include>
+                        -->
+			</div>
+			<button type="submit">Submit</button>
+		</div>
+		
+	</form>
+	<script>
+		var app = angular.module('app', ['ngMessages'])
+		app.controller('signupController', ['$scope', function($scope){
+			
+		}])
+	</script>
+</body>
+</html>
