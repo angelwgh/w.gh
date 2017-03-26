@@ -1,5 +1,4 @@
 {
-	"title":"angular",
 	"menu":{
 		"part1":{
 			"title":"Angular1 基础知识",
@@ -38,6 +37,10 @@
 						"section8":{
 							"title":"1.8 指令简介",
 							"path":"1.1.8"
+						},
+						"section9":{
+							"title":"1.9 指令详解",
+							"path":"1.1.9"
 						}
 					}
 				}

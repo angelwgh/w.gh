@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="angular.min.js"></script>
+</head>
+<body>
+	<div ng-app="app"
+		ng-init="someProperty = 'some data'">
+		<div ng-init="siblingProperty='moredata'" >
+			第二个div：{{ aThirdProperty }}
+
+			<div ng-init="aThirdProperty = 'data for 3rd property'"
+				ng-controller="SomeController">
+				第三个div：{{ aThirdProperty }}
+				<div ng-controller="SecondController">
+					第四个div：{{ aThirdProperty }}
+					<br>
+					Outside myDirective: {{ myProperty }}
+					<div my-directive ng-init="myProperty = 'wow, this is cool'">
+						Inside myDirective: {{ myProperty }}
+					</div>
+				</div>
+			</div>
+
+		</div>
+		
+	</div>
+	<script>
+		var app = angular.module('app', []);
+
+		app.directive('myDirective',function () {
+
+			return {
+				restrict:'A',
+				scope:{},
+				priority: 1000,
+				transclude:true,
+				template: '<div><input type="text" ng-model="myProperty"></div>'+
+					 '<div ng-transclude></div>'
+				
+			}
+		});
+
+		app.controller('SomeController',['$scope',function ($scope) {
+			/* body... */
+		}])
+
+		app.controller('SecondController',['$scope',function ($scope) {
+			console.log($scope.aThirdProperty)
+		}])
+	</script>
+</body>
+</html>
