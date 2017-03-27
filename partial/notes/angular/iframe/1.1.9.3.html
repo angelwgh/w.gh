@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="angular.min.js"></script>
+</head>
+<body ng-app="app">
+	<div >
+		<alink><div>www.baidu.com</div><alink>	
+	</div>
+
+	<script>
+		var app = angular.module('app',[]);
+
+		app.directive('alink', function(){
+			// Runs during compile
+			return {
+				restrict:'EA',
+				transclude:true,
+				controller:
+					function ($scope,$element,$transclude,$log) {
+						$transclude(function (clone) {
+							var a = angular.element('<a>');
+							a.attr('href',clone.text());
+							a.text(clone.text())
+							console.log(a)
+							$element.append(a)
+						})
+					}
+			};
+		});
+	</script>
+</body>
+</html>
