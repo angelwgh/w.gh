@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>compile</title>
+	<script src="angular.min.js"></script>
+</head>
+<body ng-app="app">
+	<div  ng-controller="ctr">
+		<input type="text" ng-model="age">
+		<div test>{{name}}</div>
+	</div>	 
+	<script>
+		var app = angular.module('app', []);
+		app.controller('ctr',['$scope',function ($scope) {
+			$scope.name =' wgh';
+		}])
+		app.directive('test',function () {
+			return{
+				scope:{
+					name:'@',
+					age:'='
+				},
+				template:"<div ng-bind=\"name\"></div><div>age:{{age}}</div>"
+			}
+		})
+	</script>
+</body>
+</html>

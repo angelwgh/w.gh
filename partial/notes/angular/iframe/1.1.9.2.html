@@ -18,7 +18,7 @@
 					第四个div：{{ aThirdProperty }}
 					<br>
 					Outside myDirective: {{ myProperty }}
-					<div my-directive ng-init="myProperty = 'wow, this is cool'">
+					<div my-directive ng-init="myProperty = 'wow, this is cool'" >
 						Inside myDirective: {{ myProperty }}
 					</div>
 				</div>
@@ -30,12 +30,13 @@
 	<script>
 		var app = angular.module('app', []);
 
+		
 		app.directive('myDirective',function () {
 
 			return {
 				restrict:'A',
 				scope:{},
-				priority: 1000,
+				priority: 501,
 				transclude:true,
 				template: '<div><input type="text" ng-model="myProperty"></div>'+
 					 '<div ng-transclude></div>'

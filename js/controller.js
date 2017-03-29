@@ -84,7 +84,7 @@ $wgh.content_app.controller('notesMdCtrl',['$scope','$routeParams','$http',
 				},
 				function (res) {
 					console.log(res)
-					 $('.m-content').html(res.statusText);
+					 $('.m-content').html(res.data);
 				}
 			)
 			
