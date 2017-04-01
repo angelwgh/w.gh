@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="angular.min.js"></script>
+</head>
+<body>
+	<input my-dir type="text" ng-model="name">
+
+	<div ng-bind="name"></div>		
+	<script>
+		var app= angular.module('app', []);
+
+		app.directive('myDir',function () {
+			return{
+				require:'ngModel',
+				template:'<div>{{name}}</div>',
+				link:function (scope,elem,attrs,ngModel) {
+					scope.$watch(attrs.ngModel,function () {
+						console.log(scope.name)
+					})
+				}
+			}
+		})
+	</script>
+</body>
+</html>

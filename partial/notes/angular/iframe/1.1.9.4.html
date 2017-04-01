@@ -8,18 +8,18 @@
 <body ng-app="app">
 	<div  ng-controller="ctr">
 		<input type="text" ng-model="age">
-		<div test>{{name}}</div>
+		<div test name="{{name}}" age="age">{{name}}</div>
 	</div>	 
 	<script>
 		var app = angular.module('app', []);
 		app.controller('ctr',['$scope',function ($scope) {
-			$scope.name =' wgh';
+			$scope.name =' angelwgh';
 		}])
 		app.directive('test',function () {
 			return{
 				scope:{
-					name:'@',
-					age:'='
+					name:"@name",
+					age:"=age"
 				},
 				template:"<div ng-bind=\"name\"></div><div>age:{{age}}</div>"
 			}
